@@ -9,12 +9,15 @@ let selectedDate = null;
 let currentDate = null;
 
 const calendar = document.querySelector('#datetime-picker');
-const startBtn = document.querySelector('[data-start-timer]');
+const startBtn = document.querySelector('[data-start]');
 startBtn.disabled = true;
 
-Report.info(
 
-  'Please, choose a date and click on start'
+Report.info(
+  'Info',
+  'Please, choose a date and click on start',
+  'Okey'
+
 );
 
 flatpickr(calendar, {
@@ -25,13 +28,15 @@ flatpickr(calendar, {
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < Date.now()) {
       Report.failure(
-        
-        'Please, choose a date in the future'
-      
+        'Failure',
+        'Please, choose a date in the future',
+        'Okey'
       );
     } else {
       Report.success(
-        'Congratulation! Click on start!'
+        'Success',
+        'Congratulation! Click on start!',
+        'Okey'
       );
       startBtn.disabled = false;
       const setTimer = () => {
